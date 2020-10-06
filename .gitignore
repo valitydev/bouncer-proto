@@ -1,0 +1,15 @@
+/_build/
+/target/
+*~
+.tags*
+*.sublime-workspace
+.DS_Store
+.idea
+*~
+\#*
+.\#*
+.tags*
+rebar3.crashdump
+include/*.hrl
+src/*.erl
+*.iml

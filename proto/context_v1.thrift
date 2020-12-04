@@ -33,7 +33,7 @@ struct ContextFragment {
     7: optional ContextOrgManagement orgmgmt
     8: optional ContextUrlShortener shortener
     9: optional ContextBinapi binapi
-   10: optional ContextInvoicing invoicing
+   10: optional ContextPaymentProcessing payment_processing
    11: optional ContextAnalyticsAPI anapi
 }
 
@@ -73,6 +73,8 @@ struct AuthScope {
     1: optional Entity party
     2: optional Entity shop
     3: optional Entity invoice
+    4: optional Entity invoice_template
+    5: optional Entity customer
 }
 
 /**
@@ -114,17 +116,44 @@ struct Requester {
 }
 
 /**
- * Контекст, получаемый из сервиса, реализующего интерфейс invoicing
- * https://github.com/rbkmoney/damsel/tree/master/proto/payment_processing.thrift#L996
- * (например hellgate)
+ * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
+ * https://github.com/rbkmoney/damsel/tree/master/proto/payment_processing.thrift
+ * (например invoicing в hellgate)
  * и содержащий _проверенную_ информацию
  */
-struct ContextInvoicing {
-    1: optional Entity party
+struct ContextPaymentProcessing {
+    1: optional Party party
+    2: optional Invoice invoice
+    3: optional Payment payment
+    4: optional InvoiceTemplate invoice_template
+    5: optional Customer customer
+}
+
+struct Party {
+    1: optional string id
     2: optional Entity shop
+}
+
+struct Invoice {
+    1: optional string id
+    3: optional Entity party
+    2: optional i32 num_payments
+}
+
+struct Payment {
+    1: optional string id
     3: optional Invoice invoice
-    4: optional Payment payment
-    5: optional Entity refund
+    2: optional i32 num_refunds
+}
+
+struct InvoiceTemplate {
+    1: optional string id
+    2: optional Entity party
+}
+
+struct Customer {
+    1: optional string id
+    2: optional Entity party
 }
 
 /**
@@ -145,19 +174,9 @@ struct CommonAPIOperation {
     1: optional string id
     2: optional Entity party
     3: optional Entity shop
-    4: optional Invoice invoice
-    5: optional Payment payment
+    4: optional Entity invoice
+    5: optional Entity payment
     6: optional Entity refund
-}
-
-struct Invoice {
-    1: optional string id
-    2: optional i32 num_payments
-}
-
-struct Payment {
-    1: optional string id
-    2: optional i32 num_refunds
 }
 
 /**

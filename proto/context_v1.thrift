@@ -40,6 +40,8 @@ struct ContextFragment {
    13: optional ContextWebhooks webhooks
    14: optional ContextReports reports
    15: optional ContextClaimManagement claimmgmt
+   16: optional ContextTokens tokens
+
 }
 
 /**
@@ -133,7 +135,6 @@ struct OrgRoleScope {
  */
 struct Requester {
     1: optional string ip
-    2: optional string replacement_ip
 }
 
 /**
@@ -255,6 +256,11 @@ struct CommonAPIOperation {
     13: optional Entity webhook
     14: optional Entity claim
     15: optional Entity payout
+}
+
+
+struct ContextTokens {
+    1: optional string replacement_ip
 }
 
 /**

@@ -5,16 +5,13 @@
 namespace java com.rbkmoney.bouncer.context.v1
 namespace erlang bctx_v1
 
-typedef i32 Version
-const Version HEAD = 1
+include "base.thrift"
 
-/**
- * Отметка во времени согласно RFC 3339.
- *
- * Строка должна содержать дату и время в UTC в следующем формате:
- * `2020-03-22T06:12:27Z`.
- */
-typedef string Timestamp
+typedef base.Version Version
+typedef base.Timestamp Timestamp
+typedef base.Entity Entity
+
+const Version HEAD = 2
 
 /**
  * Контекст для принятия решений, по сути аннотированный набором атрибутов.
@@ -40,8 +37,16 @@ struct ContextFragment {
    13: optional ContextWebhooks webhooks
    14: optional ContextReports reports
    15: optional ContextClaimManagement claimmgmt
-   16: optional ContextTokens tokens
+   17: optional ContextPaymentTool payment_tool
 
+   // legacy
+   16: optional ContextTokens tokens
+}
+
+// Подлежит удалению
+struct ContextTokens {
+    // Переехал в ClientInfo
+    1: optional string replacement_ip
 }
 
 /**
@@ -140,7 +145,7 @@ struct Requester {
 /**
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
  * https://github.com/rbkmoney/damsel/tree/master/proto/payment_processing.thrift
- * (например invoicing в hellgate)
+ * (например данные о платёжных сущностях invoicing в hellgate)
  * и содержащий _проверенную_ информацию
  */
 struct ContextPaymentProcessing {
@@ -227,13 +232,16 @@ struct Payout {
 }
 
 /**
- * Атрибуты Common API.
- * Данные, присланные _клиентом_ в явном виде как часть запроса
+ * Контекст Common API.
  */
 struct ContextCommonAPI {
     1: optional CommonAPIOperation op
 }
 
+/**
+ * Арибуты операции Common API.
+ * Данные, присланные _клиентом_ в явном виде как часть запроса
+ */
 struct CommonAPIOperation {
     /**
      * Например:
@@ -256,11 +264,18 @@ struct CommonAPIOperation {
     13: optional Entity webhook
     14: optional Entity claim
     15: optional Entity payout
+    16: optional ClientInfo client_info
 }
 
-
-struct ContextTokens {
-    1: optional string replacement_ip
+/*
+ * Дополнительная информация о клиенте и его устройствах
+ * передаваемая в некоторых запросах в явном виде.
+ */
+struct ClientInfo {
+    /*
+     * ip адрес плательщика передаваемый в createPaymentResource
+     */
+    1: optional string ip
 }
 
 /**
@@ -372,12 +387,18 @@ struct AnalyticsAPIOperation {
 }
 
 /**
- * Нечто уникально идентифицируемое.
- *
- * Рекомендуется использовать для обеспечения прямой совместимости, в случае
- * например, когда в будущем мы захотим расширить набор атрибутов какой-либо
- * сущности, добавив в неё что-то кроме идентификатора.
+ * Атрибуты платежного стредства.
+ * Токены платежных интрументов создаются в createPaymentResource.
+ * Этот контекст используется и для провайдерских токенов.
+ * Привязка может быть сопоставлена с Auth конекстом или CommonAPIOperation.
  */
-struct Entity {
-    1: optional string id
+struct ContextPaymentTool {
+    /**
+     * Привязка токена платежного средства
+     */
+    1: optional AuthScope scope
+    /**
+     * Время жизни токена платежного средства
+     */
+    2: optional Timestamp expiration
 }

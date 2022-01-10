@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.bouncer.rstn
+namespace java dev.vality.bouncer.rstn
 namespace erlang brstn
 
 include "base.thrift"

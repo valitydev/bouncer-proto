@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.bouncer.decisions
+namespace java dev.vality.bouncer.decisions
 namespace erlang bdcs
 
 include "context.thrift"

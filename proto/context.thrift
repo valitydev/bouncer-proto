@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.bouncer.ctx
+namespace java dev.vality.bouncer.ctx
 namespace erlang bctx
 
 enum ContextFragmentType {

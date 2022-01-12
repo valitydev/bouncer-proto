@@ -35,6 +35,11 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>dev.vality</groupId>
+            <artifactId>fistful-proto</artifactId>
+            <version>1.129-8c9aa31</version>
+        </dependency>
     </dependencies>
 
     <build>

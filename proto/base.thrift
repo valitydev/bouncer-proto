@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.bouncer.base
+namespace java dev.vality.bouncer.base
 namespace erlang bouncer_base
 
 typedef i32 Version

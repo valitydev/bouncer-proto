@@ -2,7 +2,7 @@
  * Модель контекстов для принятия решений контроля доступа.
  */
 
-namespace java com.rbkmoney.bouncer.context.v1
+namespace java dev.vality.bouncer.context.v1
 namespace erlang bctx_v1
 
 include "base.thrift"
@@ -144,7 +144,7 @@ struct Requester {
 
 /**
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
- * https://github.com/rbkmoney/damsel/tree/master/proto/payment_processing.thrift
+ * https://github.com/valitydev/damsel/tree/master/proto/payment_processing.thrift
  * (например данные о платёжных сущностях invoicing в hellgate)
  * и содержащий _проверенную_ информацию
  */
@@ -181,7 +181,7 @@ struct Customer {
 
 /**
  * Контекст, получаемый из сервисов, реализующих протоколы сервиса [вебхуков]
- * (https://github.com/rbkmoney/damsel/tree/master/proto/webhooker.thrift)
+ * (https://github.com/valitydev/damsel/tree/master/proto/webhooker.thrift)
  * и содержащий _проверенную_ информацию.
  */
 struct ContextWebhooks {
@@ -201,7 +201,6 @@ struct WebhookFilter {
 
 /**
  * Контекст, получаемый из сервисов, реализующих протоколы сервиса [отчётов]
- * (https://github.com/rbkmoney/reporter_proto/tree/master/proto/reports.thrift)
  * и содержащий _проверенную_ информацию.
  */
 struct ContextReports {
@@ -217,7 +216,7 @@ struct Report {
 
 /**
  * Контекст, получаемый из сервисов, реализующих протоколы сервиса [выплат]
- * (https://github.com/rbkmoney/damsel/tree/master/proto/payout_processing.thrift)
+ * (https://github.com/valitydev/damsel/tree/master/proto/payout_processing.thrift)
  * и содержащий _проверенную_ информацию.
  */
 struct ContextPayouts {
@@ -233,7 +232,7 @@ struct Payout {
 
 /** wallet
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
- * (https://github.com/rbkmoney/fistful-proto)
+ * (https://github.com/valitydev/fistful-proto)
  * (например wallet в fistful-server)
  * и содержащий _проверенную_ информацию
 
@@ -279,7 +278,7 @@ type = "Destination" {
 
 /** wallet_webhooks
  * Контекст, получаемый из сервисов, реализующих протоколы сервиса [вебхуков]
- * (https://github.com/rbkmoney/fistful-proto/blob/master/proto/webhooker.thrift)
+ * (https://github.com/valitydev/fistful-proto/blob/master/proto/webhooker.thrift)
  * и содержащий _проверенную_ информацию.
 
 Информация о возможных объектах и полях к ним относящихся:
@@ -294,7 +293,7 @@ type = "WalletWebhook" {
 
 /** wallet_reports
  * Контекст, получаемый из сервисов, реализующих протоколы сервиса [отчётов]
- * (https://github.com/rbkmoney/fistful-reporter-proto)
+ * (https://github.com/valitydev/fistful-reporter-proto)
  * (например wallet в fistful-server)
  * и содержащий _проверенную_ информацию
 

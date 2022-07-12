@@ -1,5 +1,5 @@
 namespace java dev.vality.bouncer.decisions
-namespace erlang bdcs
+namespace erlang bouncer.decision
 
 include "context.thrift"
 include "restriction.thrift"

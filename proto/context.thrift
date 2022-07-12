@@ -1,5 +1,5 @@
 namespace java dev.vality.bouncer.ctx
-namespace erlang bctx
+namespace erlang bouncer.ctx
 
 enum ContextFragmentType {
     /**

@@ -3,7 +3,7 @@
  */
 
 namespace java dev.vality.bouncer.context.v1
-namespace erlang bctx_v1
+namespace erlang bouncer.ctx.v1
 
 include "base.thrift"
 

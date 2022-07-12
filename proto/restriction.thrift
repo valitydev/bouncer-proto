@@ -1,5 +1,5 @@
 namespace java dev.vality.bouncer.rstn
-namespace erlang brstn
+namespace erlang bouncer.rstn
 
 include "base.thrift"
 

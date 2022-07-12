@@ -1,5 +1,5 @@
 namespace java dev.vality.bouncer.base
-namespace erlang bouncer_base
+namespace erlang bouncer.base
 
 typedef i32 Version
 

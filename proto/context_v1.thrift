@@ -444,9 +444,6 @@ struct WachterOperation {
      *  - ...
      */
     1: optional string id
-    /**
-    * Имя сервиса, которому принадлежит id операции
-    */
     2: optional string service
     3: optional Entity party
 }

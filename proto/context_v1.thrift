@@ -41,11 +41,13 @@ struct ContextFragment {
    14: optional ContextReports reports
    15: optional ContextClaimManagement claimmgmt
    17: optional ContextPaymentTool payment_tool
-   18: optional ContextWachter wachter
    /**
    * Наборы атрибутов для контекста сервиса кошельков, см. описание ниже.
    */
    19: optional set<Entity> wallet
+
+   20: optional ContextWachter wachter
+
 }
 
 /**

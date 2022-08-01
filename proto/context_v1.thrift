@@ -41,6 +41,7 @@ struct ContextFragment {
    14: optional ContextReports reports
    15: optional ContextClaimManagement claimmgmt
    17: optional ContextPaymentTool payment_tool
+   18: optional ContextWachter wachter
    /**
    * Наборы атрибутов для контекста сервиса кошельков, см. описание ниже.
    */
@@ -424,6 +425,28 @@ struct UrlShortenerOperation {
 struct ShortenedUrl {
     1: optional string id
     2: optional Entity owner
+}
+
+/**
+ * Атрибуты Wachter.
+ */
+struct ContextWachter {
+    1: optional WachterOperation op
+}
+
+struct WachterOperation {
+    /**
+     * Например:
+     *  - "getClaim"
+     *  - "commit"
+     *  - ...
+     */
+    1: optional string id
+    /**
+    * Имя сервиса, которому принадлежит id операции
+    */
+    2: optional string service
+    3: optional Entity party
 }
 
 

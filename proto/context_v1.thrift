@@ -449,6 +449,18 @@ struct WachterOperation {
     */
     2: optional string service_name
     3: optional Entity party
+    4: optional set<Access> access
+}
+
+struct Access {
+    /**
+     * Например:
+     *  - "claim-management"
+     *  - "private-api"
+     *  - ...
+     */
+    1: optional string id
+    2: optional set<EntityID> roles
 }
 
 

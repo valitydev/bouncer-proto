@@ -75,6 +75,7 @@ struct Auth {
     2: optional set<AuthScope> scope
     3: optional Timestamp expiration
     4: optional Token token
+    5: optional set<ResourceAccess> access
 }
 
 /**
@@ -448,11 +449,9 @@ struct WachterOperation {
     * Имя сервиса, которому принадлежит id операции
     */
     2: optional string service_name
-    3: optional Entity party
-    4: optional set<Access> access
 }
 
-struct Access {
+struct ResourceAccess {
     /**
      * Например:
      *  - "claim-management"

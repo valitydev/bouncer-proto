@@ -104,6 +104,7 @@ struct Token {
      * [1]: https://tools.ietf.org/html/rfc7519#section-4.1.7
      */
     1: optional string id
+    2: optional set<ResourceAccess> access
 }
 
 /**
@@ -448,11 +449,9 @@ struct WachterOperation {
     * Имя сервиса, которому принадлежит id операции
     */
     2: optional string service_name
-    3: optional Entity party
-    4: optional set<Access> access
 }
 
-struct Access {
+struct ResourceAccess {
     /**
      * Например:
      *  - "claim-management"
@@ -460,7 +459,7 @@ struct Access {
      *  - ...
      */
     1: optional string id
-    2: optional set<EntityID> roles
+    2: optional set<string> roles
 }
 
 

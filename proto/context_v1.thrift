@@ -75,7 +75,6 @@ struct Auth {
     2: optional set<AuthScope> scope
     3: optional Timestamp expiration
     4: optional Token token
-    5: optional set<ResourceAccess> access
 }
 
 /**
@@ -105,6 +104,7 @@ struct Token {
      * [1]: https://tools.ietf.org/html/rfc7519#section-4.1.7
      */
     1: optional string id
+    2: optional set<ResourceAccess> access
 }
 
 /**
@@ -459,7 +459,7 @@ struct ResourceAccess {
      *  - ...
      */
     1: optional string id
-    2: optional set<EntityID> roles
+    2: optional set<string> roles
 }
 
 

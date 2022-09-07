@@ -46,8 +46,6 @@ struct ContextFragment {
    */
    19: optional set<Entity> wallet
 
-   20: optional ContextWachter wachter
-
 }
 
 /**
@@ -104,7 +102,6 @@ struct Token {
      * [1]: https://tools.ietf.org/html/rfc7519#section-4.1.7
      */
     1: optional string id
-    2: optional set<ResourceAccess> access
 }
 
 /**
@@ -429,39 +426,6 @@ struct ShortenedUrl {
     1: optional string id
     2: optional Entity owner
 }
-
-/**
- * Атрибуты Wachter.
- */
-struct ContextWachter {
-    1: optional WachterOperation op
-}
-
-struct WachterOperation {
-    /**
-     * Например:
-     *  - "getClaim"
-     *  - "commit"
-     *  - ...
-     */
-    1: optional string id
-    /**
-    * Имя сервиса, которому принадлежит id операции
-    */
-    2: optional string service_name
-}
-
-struct ResourceAccess {
-    /**
-     * Например:
-     *  - "claim-management"
-     *  - "private-api"
-     *  - ...
-     */
-    1: optional string id
-    2: optional set<string> roles
-}
-
 
 struct ContextBinapi {
     1: required BinapiOperation op

@@ -46,8 +46,6 @@ struct ContextFragment {
    */
    19: optional set<Entity> wallet
 
-   20: optional ContextWachter wachter
-
 }
 
 /**
@@ -428,27 +426,6 @@ struct UrlShortenerOperation {
 struct ShortenedUrl {
     1: optional string id
     2: optional Entity owner
-}
-
-/**
- * Атрибуты Wachter.
- */
-struct ContextWachter {
-    1: optional WachterOperation op
-}
-
-struct WachterOperation {
-    /**
-     * Например:
-     *  - "getClaim"
-     *  - "commit"
-     *  - ...
-     */
-    1: optional string id
-    /**
-    * Имя сервиса, которому принадлежит id операции
-    */
-    2: optional string service_name
 }
 
 struct ResourceAccess {

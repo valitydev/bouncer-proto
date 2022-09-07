@@ -102,6 +102,7 @@ struct Token {
      * [1]: https://tools.ietf.org/html/rfc7519#section-4.1.7
      */
     1: optional string id
+    2: optional set<ResourceAccess> access
 }
 
 /**
@@ -426,6 +427,18 @@ struct ShortenedUrl {
     1: optional string id
     2: optional Entity owner
 }
+
+struct ResourceAccess {
+    /**
+     * Например:
+     *  - "claim-management"
+     *  - "private-api"
+     *  - ...
+     */
+    1: optional string id
+    2: optional set<string> roles
+}
+
 
 struct ContextBinapi {
     1: required BinapiOperation op

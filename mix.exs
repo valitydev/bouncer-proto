@@ -8,7 +8,7 @@ defmodule BouncerProto.MixProject do
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      compilers: [:thrift | Mix.compilers],
+      compilers: [:thrift, :woody | Mix.compilers],
       thrift: [
         files: Path.wildcard("proto/*.thrift")
       ]
@@ -19,7 +19,8 @@ defmodule BouncerProto.MixProject do
 
   defp deps do
     [
-      {:thrift, git: "https://github.com/pinterest/elixir-thrift", branch: "master"}
+      {:thrift, git: "https://github.com/pinterest/elixir-thrift", branch: "master"},
+      {:woody_ex, git: "https://github.com/valitydev/woody_ex.git", branch: "ft/thrift-elixir"}
     ]
   end
 end

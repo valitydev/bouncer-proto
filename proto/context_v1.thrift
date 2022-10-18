@@ -4,6 +4,7 @@
 
 namespace java dev.vality.bouncer.context.v1
 namespace erlang bouncer.ctx.v1
+namespace elixir Bouncer.Thrift.Ctx.V1
 
 include "base.thrift"
 

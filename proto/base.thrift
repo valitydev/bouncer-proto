@@ -1,5 +1,6 @@
 namespace java dev.vality.bouncer.base
 namespace erlang bouncer.base
+namespace elixir Bouncer.Thrift.Base
 
 typedef i32 Version
 

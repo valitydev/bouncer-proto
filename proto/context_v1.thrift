@@ -46,7 +46,7 @@ struct ContextFragment {
    * Наборы атрибутов для контекста сервиса кошельков, см. описание ниже.
    */
    19: optional set<Entity> wallet
-
+   20: optional ContextApiKeyMgmt apikeymgmt
 }
 
 /**
@@ -386,6 +386,32 @@ struct OrgManagementInvitation {
 
 struct Invitee {
     1: optional string email
+}
+
+/**
+ * Атрибуты Api Key Management.
+ */
+struct ContextApiKeyMgmt {
+    1: optional ApiKeyMgmtOperation op
+    2: optional ApiKeyMgmtApiKey api_key
+}
+
+struct ApiKeyMgmtOperation {
+    /**
+     * Например:
+     *  - "GetApiKey"
+     *  - "RevokeApiKey"
+     *  - ...
+     */
+    1: optional string id
+    2: optional Entity organization
+    3: optional Entity api_key
+}
+
+struct ApiKeyMgmtApiKey {
+    1: optional string id
+    2: optional Entity owner
+    3: optional string status
 }
 
 /**

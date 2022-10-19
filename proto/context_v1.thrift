@@ -411,7 +411,6 @@ struct ApiKeyMgmtOperation {
 struct ApiKeyMgmtApiKey {
     1: optional string id
     2: optional Entity owner
-    3: optional string status
 }
 
 /**

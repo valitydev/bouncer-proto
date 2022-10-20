@@ -28,6 +28,7 @@ struct Entity {
     3: optional EntityID party
 
     4: optional WalletAttrs wallet
+    5: optional ApiKeyAttrs api_key
 }
 
 struct Cash {
@@ -40,6 +41,10 @@ struct WalletAttrs {
     2: optional EntityID wallet
     3: optional Cash body
     4: optional WalletReportAttrs report
+}
+
+struct ApiKeyAttrs {
+    1: optional EntityID organization
 }
 
 struct WalletReportAttrs {

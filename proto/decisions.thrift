@@ -1,6 +1,6 @@
 namespace java dev.vality.bouncer.decisions
 namespace erlang bouncer.decision
-namespace elixir Bouncer.Thrift.Decision
+namespace elixir Bouncer.Decisions
 
 include "context.thrift"
 include "restriction.thrift"

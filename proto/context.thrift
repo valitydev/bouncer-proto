@@ -1,6 +1,6 @@
 namespace java dev.vality.bouncer.ctx
 namespace erlang bouncer.ctx
-namespace elixir Bouncer.Thrift.Ctx
+namespace elixir Bouncer.Context
 
 enum ContextFragmentType {
     /**

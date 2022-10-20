@@ -1,6 +1,6 @@
 namespace java dev.vality.bouncer.rstn
 namespace erlang bouncer.rstn
-namespace elixir Bouncer.Thrift.Restriction
+namespace elixir Bouncer.Restriction
 
 include "base.thrift"
 

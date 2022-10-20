@@ -4,7 +4,7 @@
 
 namespace java dev.vality.bouncer.context.v1
 namespace erlang bouncer.ctx.v1
-namespace elixir Bouncer.Thrift.Ctx.V1
+namespace elixir Bouncer.Context.V1
 
 include "base.thrift"
 
@@ -47,6 +47,7 @@ struct ContextFragment {
    */
    19: optional set<Entity> wallet
    20: optional ContextApiKeyMgmt apikeymgmt
+   21: optional set<Entity> api_key
 }
 
 /**
@@ -393,7 +394,6 @@ struct Invitee {
  */
 struct ContextApiKeyMgmt {
     1: optional ApiKeyMgmtOperation op
-    2: optional ApiKeyMgmtApiKey api_key
 }
 
 struct ApiKeyMgmtOperation {
@@ -408,10 +408,17 @@ struct ApiKeyMgmtOperation {
     3: optional Entity api_key
 }
 
-struct ApiKeyMgmtApiKey {
-    1: optional string id
-    2: optional Entity owner
+/** api_key
+ * Контекст, содержащий _проверенную_ информацию об объектах.
+
+Информация о возможных объектах и полях к ним относящихся:
+
+type = "ApiKey" {
+    1: id
+    2: party
 }
+
+*/
 
 /**
  * Атрибуты Claim Management API.

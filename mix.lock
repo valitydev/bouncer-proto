@@ -18,5 +18,5 @@
   "thrift": {:git, "https://github.com/pinterest/elixir-thrift", "3ab57fc65d60eea63381318f2741582b19c2dcda", [branch: "master"]},
   "unicode_util_compat": {:hex, :unicode_util_compat, "0.7.0", "bc84380c9ab48177092f43ac89e4dfa2c6d62b40b8bd132b1059ecc7232f9a78", [:rebar3], [], "hexpm", "25eee6d67df61960cf6a794239566599b09e17e668d3700247bc498638152521"},
   "woody": {:git, "https://github.com/valitydev/woody_erlang.git", "f7cab53fdba110f4858367fa56b4ab47d6ffdeec", [branch: "ft/codec-concept"]},
-  "woody_ex": {:git, "https://github.com/valitydev/woody_ex.git", "64982b1ae91659619b37ff375cdb4632749fd62c", [branch: "ft/thrift-elixir"]},
+  "woody_ex": {:git, "https://github.com/valitydev/woody_ex.git", "74b039ca07c33890b88ae3370ab99b96f9956708", [branch: "ft/thrift-elixir"]},
 }

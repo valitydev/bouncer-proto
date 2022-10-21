@@ -45,9 +45,9 @@ struct ContextFragment {
    /**
    * Наборы атрибутов для контекста сервиса кошельков, см. описание ниже.
    */
-   19: optional set<Entity> wallet
+   19: optional set<Entity> wallet // depecated, please move to 21: entities
    20: optional ContextApiKeyMgmt apikeymgmt
-   21: optional set<Entity> api_key
+   21: optional set<Entity> entities
 }
 
 /**
@@ -415,7 +415,7 @@ struct ApiKeyMgmtOperation {
 
 type = "ApiKey" {
     1: id
-    2: party
+    2: organization
 }
 
 */

@@ -4,6 +4,7 @@
 
 namespace java dev.vality.bouncer.context.v1
 namespace erlang bouncer.ctx.v1
+namespace elixir Bouncer.Context.V1
 
 include "base.thrift"
 
@@ -44,8 +45,9 @@ struct ContextFragment {
    /**
    * Наборы атрибутов для контекста сервиса кошельков, см. описание ниже.
    */
-   19: optional set<Entity> wallet
-
+   19: optional set<Entity> wallet // depecated, please move to 21: entities
+   20: optional ContextApiKeyMgmt apikeymgmt
+   21: optional set<Entity> entities
 }
 
 /**
@@ -386,6 +388,37 @@ struct OrgManagementInvitation {
 struct Invitee {
     1: optional string email
 }
+
+/**
+ * Атрибуты Api Key Management.
+ */
+struct ContextApiKeyMgmt {
+    1: optional ApiKeyMgmtOperation op
+}
+
+struct ApiKeyMgmtOperation {
+    /**
+     * Например:
+     *  - "GetApiKey"
+     *  - "RevokeApiKey"
+     *  - ...
+     */
+    1: optional string id
+    2: optional Entity organization
+    3: optional Entity api_key
+}
+
+/** api_key
+ * Контекст, содержащий _проверенную_ информацию об объектах.
+
+Информация о возможных объектах и полях к ним относящихся:
+
+type = "ApiKey" {
+    1: id
+    2: organization
+}
+
+*/
 
 /**
  * Атрибуты Claim Management API.

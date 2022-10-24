@@ -1,5 +1,6 @@
 namespace java dev.vality.bouncer.base
 namespace erlang bouncer.base
+namespace elixir Bouncer.Base
 
 typedef i32 Version
 
@@ -25,6 +26,7 @@ struct Entity {
     1: optional EntityID id
     2: optional string type
     3: optional EntityID party
+    5: optional EntityID organization
 
     4: optional WalletAttrs wallet
 }

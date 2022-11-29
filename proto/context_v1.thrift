@@ -415,7 +415,7 @@ struct ApiKeyMgmtOperation {
 
 type = "ApiKey" {
     1: id
-    2: organization
+    2: party
 }
 
 */

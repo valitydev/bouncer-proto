@@ -404,7 +404,7 @@ struct ApiKeyMgmtOperation {
      *  - ...
      */
     1: optional string id
-    2: optional Entity organization
+    2: optional Entity party
     3: optional Entity api_key
 }
 
@@ -415,7 +415,7 @@ struct ApiKeyMgmtOperation {
 
 type = "ApiKey" {
     1: id
-    2: organization
+    2: party
 }
 
 */

@@ -19,7 +19,7 @@ defmodule BouncerProto.MixProject do
 
   defp deps do
     [
-      {:thrift, git: "https://github.com/pinterest/elixir-thrift", branch: "master"},
+      {:thrift, git: "https://github.com/valitydev/elixir-thrift", branch: "master"},
       {:woody_ex, git: "https://github.com/valitydev/woody_ex.git", branch: "master"}
     ]
   end

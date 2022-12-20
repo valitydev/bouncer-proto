@@ -37,4 +37,9 @@ struct AnalyticsAPIOperationRestrictions {
  */
 struct RestrictionsCommonAPI {
     1: optional bool ip_replacement_forbidden
+    2: optional CommonAPIOperationRestrictions op
+}
+
+struct CommonAPIOperationRestrictions {
+    1: required set<Entity> shops
 }

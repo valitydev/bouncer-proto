@@ -81,7 +81,7 @@ struct Auth {
  * Известные методы авторизации.
  * Используются в качестве значения свойства `auth.method`.
  */
-const string AuthMethod_ApiKey = "ApiKey"
+const string AuthMethod_ApiKey = "ApiKeyToken"
 const string AuthMethod_SessionToken = "SessionToken"
 const string AuthMethod_InvoiceAccessToken = "InvoiceAccessToken"
 const string AuthMethod_InvoiceTemplateAccessToken = "InvoiceTemplateAccessToken"

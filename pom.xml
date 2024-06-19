@@ -40,6 +40,12 @@
             <groupId>dev.vality</groupId>
             <artifactId>fistful-proto</artifactId>
             <version>1.173-1c28618</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -64,7 +70,7 @@
                 <artifactId>thrift-maven-plugin</artifactId>
                 <version>0.10.0</version>
                 <configuration>
-                    <generator>java:fullcamel</generator>
+                    <generator>java:fullcamel,generated_annotations=suppress</generator>
                     <thriftSourceRoot>${project.basedir}/proto</thriftSourceRoot>
                     <thriftExecutable>${path_to_thrift}</thriftExecutable>
                 </configuration>

@@ -18,6 +18,19 @@
     <description>Generates jar artifact containing compiled thrift classes based on generated thrift IDL files</description>
     <url>https://github.com/valitydev/bouncer-proto.git</url>
 
+    <developers>
+        <developer>
+            <organization>Vality</organization>
+            <organizationUrl>https://github.com/valitydev</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/valitydev/bouncer-proto.git</connection>
+        <developerConnection>scm:git:ssh://github.com/valitydev/bouncer-proto.git</developerConnection>
+        <url>https://github.com/valitydev/bouncer-proto/tree/master</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>SNAPSHOT</revision>
@@ -30,28 +43,10 @@
             <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.vality</groupId>
-            <artifactId>fistful-proto</artifactId>
-            <version>1.173-1c28618</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
-
         <resources>
             <resource>
                 <directory>${project.basedir}/proto</directory>
@@ -62,9 +57,7 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
-
         <plugins>
-            <!-- THRIFT -->
             <plugin>
                 <groupId>org.apache.thrift</groupId>
                 <artifactId>thrift-maven-plugin</artifactId>
@@ -84,7 +77,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -110,5 +102,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

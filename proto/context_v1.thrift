@@ -37,7 +37,6 @@ struct ContextFragment {
    18: optional ContextWalletAPI wapi
 
    10: optional ContextPaymentProcessing payment_processing
-   12: optional ContextPayouts payouts
    13: optional ContextWebhooks webhooks
    14: optional ContextReports reports
    15: optional ContextClaimManagement claimmgmt
@@ -218,22 +217,6 @@ struct Report {
     4: optional set<Entity> files
 }
 
-/**
- * Контекст, получаемый из сервисов, реализующих протоколы сервиса [выплат]
- * (https://github.com/valitydev/damsel/tree/master/proto/payout_processing.thrift)
- * и содержащий _проверенную_ информацию.
- */
-struct ContextPayouts {
-    1: optional Payout payout
-}
-
-struct Payout {
-    1: optional string id
-    2: optional Entity party
-    3: optional Entity contract
-    4: optional Entity shop
-}
-
 /** wallet
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
  * (https://github.com/valitydev/fistful-proto)
@@ -343,7 +326,6 @@ struct CommonAPIOperation {
     12: optional Entity file
     13: optional Entity webhook
     14: optional Entity claim
-    15: optional Entity payout
     16: optional ClientInfo client_info
 }
 

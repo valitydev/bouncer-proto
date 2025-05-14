@@ -225,15 +225,9 @@ struct Report {
 
 Информация о возможных объектах и полях к ним относящихся:
 
-type = "Identity" {
-    1: id
-    2: party
-}
-
 type = "Wallet" {
     1: id
-    2: identity
-    3: wallet_grant_body
+    2: party
 }
 
 type = "Withdrawal" {
@@ -246,19 +240,14 @@ type = "Deposit" {
     2: wallet
 }
 
-type = "W2WTransfer" {
-    1: id
-    2: wallet
-}
-
 type = "Source" {
     1: id
-    2: identity
+    2: party
 }
 
 type = "Destination" {
     1: id
-    2: identity
+    2: party
 }
 
 */
@@ -272,7 +261,7 @@ type = "Destination" {
 
 type = "WalletWebhook" {
     1: id
-    2: identity
+    2: party
     3: wallet
 }
 
@@ -288,7 +277,7 @@ type = "WalletWebhook" {
 
 type = "WalletReport" {
     1: id
-    2: identity
+    2: party
     3: files
 }
 
@@ -532,19 +521,17 @@ struct WalletAPIOperation {
     /**
      * Например:
      *  - "ListDestinations"
-     *  - "GetIdentity"
      *  - "CreateWebhook"
      */
     1: optional string id
     2: optional EntityID party
-    3: optional EntityID identity
-    4: optional EntityID wallet
-    5: optional EntityID withdrawal
-    6: optional EntityID deposit
-    7: optional EntityID w2w_transfer
-    8: optional EntityID source
-    9: optional EntityID destination
-    10: optional EntityID report
-    11: optional EntityID file
-    12: optional EntityID webhook
+    3: optional EntityID wallet
+    4: optional EntityID withdrawal
+    5: optional EntityID deposit
+    6: optional EntityID w2w_transfer
+    7: optional EntityID source
+    8: optional EntityID destination
+    9: optional EntityID report
+    10: optional EntityID file
+    11: optional EntityID webhook
 }

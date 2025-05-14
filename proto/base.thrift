@@ -36,10 +36,9 @@ struct Cash {
 }
 
 struct WalletAttrs {
-    1: optional EntityID identity
-    2: optional EntityID wallet
-    3: optional Cash body
-    4: optional WalletReportAttrs report
+    1: optional EntityID wallet
+    2: optional Cash body
+    3: optional WalletReportAttrs report
 }
 
 struct WalletReportAttrs {

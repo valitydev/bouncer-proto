@@ -84,9 +84,6 @@ const string AuthMethod_ApiKey = "ApiKeyToken"
 const string AuthMethod_SessionToken = "SessionToken"
 const string AuthMethod_InvoiceAccessToken = "InvoiceAccessToken"
 const string AuthMethod_InvoiceTemplateAccessToken = "InvoiceTemplateAccessToken"
-const string AuthMethod_CustomerAccessToken = "CustomerAccessToken"
-const string AuthMethod_P2PTransferTemplateTicket = "P2PTransferTemplateTicket"
-const string AuthMethod_P2PTransferTemplateAccessToken = "P2PTransferTemplateAccessToken"
 
 struct AuthScope {
     1: optional Entity party
@@ -154,7 +151,6 @@ struct Requester {
 struct ContextPaymentProcessing {
     1: optional Invoice invoice
     2: optional InvoiceTemplate invoice_template
-    3: optional Customer customer
 }
 
 struct Invoice {
@@ -173,13 +169,6 @@ struct InvoiceTemplate {
     1: optional string id
     2: optional Entity party
     3: optional Entity shop
-}
-
-struct Customer {
-    1: optional string id
-    2: optional Entity party
-    3: optional Entity shop
-    4: optional set<Entity> bindings
 }
 
 /**
@@ -304,18 +293,12 @@ struct CommonAPIOperation {
     1: optional string id
     2: optional Entity party
     3: optional Entity shop
-    7: optional Entity contract
     4: optional Entity invoice
     5: optional Entity payment
     6: optional Entity refund
-    8: optional Entity invoice_template
-    9: optional Entity customer
-    10: optional Entity binding
-    11: optional Entity report
-    12: optional Entity file
-    13: optional Entity webhook
-    14: optional Entity claim
-    16: optional ClientInfo client_info
+    7: optional Entity invoice_template
+    8: optional Entity webhook
+    9: optional ClientInfo client_info
 }
 
 /*
@@ -501,20 +484,6 @@ struct ContextPaymentTool {
  */
 struct ContextWalletAPI {
     1: optional WalletAPIOperation op
-    2: optional set<WalletGrant> grants
-}
-
-/**
- * Контекст, получаемый из grant токена, предоставляющего доступ к кошельку или назначению
- * и содержащий _проверенную_ информацию.
- */
-
-struct WalletGrant {
-    1: optional EntityID wallet
-    2: optional EntityID destination
-    3: optional Cash body
-    4: optional Timestamp created_at
-    5: optional Timestamp expires_on
 }
 
 struct WalletAPIOperation {
@@ -528,10 +497,9 @@ struct WalletAPIOperation {
     3: optional EntityID wallet
     4: optional EntityID withdrawal
     5: optional EntityID deposit
-    6: optional EntityID w2w_transfer
-    7: optional EntityID source
-    8: optional EntityID destination
-    9: optional EntityID report
-    10: optional EntityID file
-    11: optional EntityID webhook
+    6: optional EntityID source
+    7: optional EntityID destination
+    8: optional EntityID report
+    9: optional EntityID file
+    10: optional EntityID webhook
 }

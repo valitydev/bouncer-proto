@@ -84,6 +84,7 @@ const string AuthMethod_ApiKey = "ApiKeyToken"
 const string AuthMethod_SessionToken = "SessionToken"
 const string AuthMethod_InvoiceAccessToken = "InvoiceAccessToken"
 const string AuthMethod_InvoiceTemplateAccessToken = "InvoiceTemplateAccessToken"
+const string AuthMethod_CustomerAccessToken = "CustomerAccessToken"
 
 struct AuthScope {
     1: optional Entity party

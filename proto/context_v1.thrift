@@ -300,6 +300,7 @@ struct CommonAPIOperation {
     7: optional Entity invoice_template
     8: optional Entity webhook
     9: optional ClientInfo client_info
+    10: optional Entity customer
 }
 
 /*

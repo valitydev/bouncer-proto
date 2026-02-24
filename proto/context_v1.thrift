@@ -84,6 +84,7 @@ const string AuthMethod_ApiKey = "ApiKeyToken"
 const string AuthMethod_SessionToken = "SessionToken"
 const string AuthMethod_InvoiceAccessToken = "InvoiceAccessToken"
 const string AuthMethod_InvoiceTemplateAccessToken = "InvoiceTemplateAccessToken"
+const string AuthMethod_CustomerAccessToken = "CustomerAccessToken"
 
 struct AuthScope {
     1: optional Entity party
@@ -299,6 +300,7 @@ struct CommonAPIOperation {
     7: optional Entity invoice_template
     8: optional Entity webhook
     9: optional ClientInfo client_info
+    10: optional Entity customer
 }
 
 /*

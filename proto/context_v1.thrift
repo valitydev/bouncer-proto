@@ -47,6 +47,7 @@ struct ContextFragment {
    19: optional set<Entity> wallet // depecated, please move to 21: entities
    20: optional ContextApiKeyMgmt apikeymgmt
    21: optional set<Entity> entities
+   22: optional ContextCustomerManagement cubasty
 }
 
 /**
@@ -301,6 +302,7 @@ struct CommonAPIOperation {
     8: optional Entity webhook
     9: optional ClientInfo client_info
     10: optional Entity customer
+    11: optional Entity bank_card
 }
 
 /*
@@ -504,4 +506,19 @@ struct WalletAPIOperation {
     8: optional EntityID report
     9: optional EntityID file
     10: optional EntityID webhook
+}
+
+struct ContextCustomerManagement {
+    1: optional Customer customer
+    2: optional BankCard bank_card
+}
+
+struct Customer {
+    1: optional string id
+    2: optional Entity party
+}
+
+struct BankCard {
+    1: optional string id
+    2: optional set<Entity> parties
 }

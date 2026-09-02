@@ -21,3 +21,8 @@ erl_crash.dump
 *.ez
 /tmp/
 /lib/
+
+# frontend
+node_modules
+clients
+dist

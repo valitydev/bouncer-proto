@@ -120,6 +120,7 @@ struct Organization {
     2: optional Entity owner
     3: optional set<OrgRole> roles
     4: optional Entity party
+    5: optional set<string> allowed_ip
 }
 
 struct OrgRole {

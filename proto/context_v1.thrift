@@ -27,6 +27,7 @@ struct ContextFragment {
     2: optional Environment env
     3: optional Auth auth
     4: optional User user
+    23: optional Party party
     5: optional Requester requester
 
     6: optional ContextCommonAPI capi
@@ -136,6 +137,20 @@ struct OrgRole {
 
 struct OrgRoleScope {
     1: optional Entity shop
+}
+
+/**
+ * Атрибуты участника.
+ */
+struct Party {
+    1: optional string id
+    2: optional PartyOrganization org
+}
+
+struct PartyOrganization {
+    1: optional string id
+    2: optional Entity owner
+    3: optional set<string> allowed_ip
 }
 
 /**

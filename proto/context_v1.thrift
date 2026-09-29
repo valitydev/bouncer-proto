@@ -144,7 +144,7 @@ struct OrgRoleScope {
  */
 struct Party {
     1: optional string id
-    2: optional PartyOrganization org
+    2: optional PartyOrganization organization
 }
 
 struct PartyOrganization {

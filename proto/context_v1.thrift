@@ -27,7 +27,7 @@ struct ContextFragment {
     2: optional Environment env
     3: optional Auth auth
     4: optional User user
-    23: optional Party party
+   23: optional Party party
     5: optional Requester requester
 
     6: optional ContextCommonAPI capi
@@ -121,7 +121,7 @@ struct Organization {
     2: optional Entity owner
     3: optional set<OrgRole> roles
     4: optional Entity party
-    5: optional set<string> allowed_ip
+    5: optional set<string> allowed_ips
 }
 
 struct OrgRole {
@@ -150,7 +150,7 @@ struct Party {
 struct PartyOrganization {
     1: optional string id
     2: optional Entity owner
-    3: optional set<string> allowed_ip
+    3: optional set<string> allowed_ips
 }
 
 /**

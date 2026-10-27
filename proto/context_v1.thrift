@@ -49,6 +49,9 @@ struct ContextFragment {
    20: optional ContextApiKeyMgmt apikeymgmt
    21: optional set<Entity> entities
    22: optional ContextCustomerManagement cubasty
+
+   24: optional ContextTransactionSearch transaction_search
+   25: optional ContextThreats threats
 }
 
 /**
@@ -537,4 +540,52 @@ struct Customer {
 struct BankCard {
     1: optional string id
     2: optional set<Entity> parties
+}
+
+/**
+* Атрибуты TransactionSearchAPI (b2b-api)
+*/
+
+struct ContextTransactionSearch {
+    1: optional TransactionSearchOperation op
+}
+
+struct TransactionSearchOperation {
+    /**
+     * Например:
+     *  - "GetTransactionByID"
+     *  -
+     */
+    1: optional string id
+    2: optional EntityID party
+    3: optional EntityID transaction
+}
+
+/**
+* Атрибуты, описывающие риски злоупотреблений, связанные с заданным пользователем
+*/
+
+struct ContextThreats {
+    /**
+    * Максимальныый уровень угрозы, зафиксированный для заданного пользователем
+    */
+    1: optional base.ThreatLevel level
+    /**
+    * Перечень активных угроз
+    * поле экспериментальное, в текущей реализации игнорируется
+    */
+    2: optional set<Threat> threats
+}
+
+struct Threat {
+    1: required string name
+    2: required base.ThreatLevel level
+    /**
+    * Перечень полей и значений события, на которое стриггерилось правило обнаружения
+    * например, если группировка событий производилась по идентификатору токена,
+    * то map будет содержать подобную запись
+    * {"subject.auth_signature": $JTI_FROM_JWT}
+    * в дальнейшем это может быть использовано для создания политик в bouncer таких
+    * например, что если input.auth_signatire == threat.auth_signature -> deny
+    3: optional map<string, string> details
 }

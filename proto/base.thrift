@@ -48,3 +48,17 @@ struct WalletReportAttrs {
     */
     1: optional set<EntityID> files
 }
+
+union ThreatLevel {
+    1: CriticalLevel critical
+    2: HighLevel high
+    3: MediumLevel medium
+    4: LowLevel low
+    5: InfoLevel informational
+}
+
+struct CriticalLevel {}
+struct HighLevel {}
+struct MediumLevel {}
+struct LowLevel {}
+struct InfoLevel {}

@@ -587,5 +587,6 @@ struct Threat {
     * {"subject.auth_signature": $JTI_FROM_JWT}
     * в дальнейшем это может быть использовано для создания политик в bouncer таких
     * например, что если input.auth_signatire == threat.auth_signature -> deny
+    */
     3: optional map<string, string> details
 }

@@ -49,16 +49,22 @@ struct WalletReportAttrs {
     1: optional set<EntityID> files
 }
 
-union ThreatLevel {
-    1: CriticalLevel critical
-    2: HighLevel high
-    3: MediumLevel medium
-    4: LowLevel low
-    5: InfoLevel informational
+enum ThreatLevel {
+    informational
+    low
+    medium
+    high
+    critical
 }
 
-struct CriticalLevel {}
-struct HighLevel {}
-struct MediumLevel {}
-struct LowLevel {}
-struct InfoLevel {}
+typedef string EventAttributeKey
+
+union EventAttributeValue {
+    1: bool bool_value
+    2: i64 integer_value
+    3: double double_value
+    4: string string_value
+    5: binary binary_value
+}
+
+typedef map<EventAttributeKey, EventAttributeValue> Event

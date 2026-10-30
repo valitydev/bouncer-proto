@@ -567,26 +567,44 @@ struct TransactionSearchOperation {
 
 struct ContextThreats {
     /**
-    * Максимальныый уровень угрозы, зафиксированный для заданного пользователем
+    * Перечень активных угроз (сработавших правил обнаружения)
     */
-    1: optional base.ThreatLevel level
-    /**
-    * Перечень активных угроз
-    * поле экспериментальное, в текущей реализации игнорируется
-    */
-    2: optional set<Threat> threats
+    1: optional set<Threat> threats
 }
 
 struct Threat {
     1: required string name
     2: required base.ThreatLevel level
     /**
-    * Перечень полей и значений события, на которое стриггерилось правило обнаружения
+    * Перечень полей и значений событий, на которое стриггерилось правило обнаружения
     * например, если группировка событий производилась по идентификатору токена,
     * то map будет содержать подобную запись
     * {"subject.auth_signature": $JTI_FROM_JWT}
     * в дальнейшем это может быть использовано для создания политик в bouncer таких
-    * например, что если input.auth_signatire == threat.auth_signature -> deny
+    * например, что если input.subject.auth_signatire == threat.subject.auth_signature -> deny
     */
-    3: optional map<string, string> details
+    3: optional base.Event event_details
+    /**
+    * Перечень тегов, назначенных правилом обнаружения
+    * Тег - это строковый идентификатор, ассоциированный с правилом обнаружения, предназначен для
+    * дополнительной классификации и обработки (например, для сопоставления с различными системами безопасности:
+    *  # MITRE ATT&CK framework references
+    *  - attack.discovery
+    *  - attack.t1012
+    *
+    *  # MITRE Cyber Analytics Repository (CAR)
+    *  - car.2016-04-005
+    *  - car-2016-04-005
+    *
+    *  # Traffic Light Protocol
+    *  - tlp.amber
+    *  - tlp.green
+    *
+    *  # CVE
+    *  - cve.2022-27925
+    * или для информирования движка обнаружения корреляций о времени охлаждения(автоотмены):
+    *  - cooldown.1m
+    * и т.д.)
+    */
+    4: optional set<string> tags
 }

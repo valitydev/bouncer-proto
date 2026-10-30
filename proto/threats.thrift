@@ -5,29 +5,23 @@ namespace elixir Bouncer.Threats
 include "context.thrift"
 include "base.thrift"
 
-typedef map<string, string> Event
-
 typedef string SubjectID
 
 struct ThreatContext {
     /**
-    * Максимальныый уровень угрозы, зафиксированный для заданного субъекта
-    */
-    1: required base.ThreatLevel level
-    /**
     * Фрагмент контекста, предназначеный для передачи в Arbiter (context_v1.ContextThreats)
     */
-    2: required context.ContextFragment fragment
+    1: optional context.ContextFragment fragment
 }
 
 service ThreatDetector {
 
-    void ProcessEvent (1: Event event)
+    void ProcessEvent (1: base.Event event)
 
     /**
     * ThreatDetector не содержит базу субъектов, для сервиса это эфемерные сущности
     * поэтому он не может отличить ситуацию "нет субъекта" от "нет активных угроз для субъекта".
-    * Если активных угроз по субъекту не обнаружено, то по умолчанию возвращается контекст с level = informational
+    * Если активных угроз по субъекту не обнаружено, то возвращается пустой контекст
     */
     ThreatContext GetContext (1: SubjectID id)
 

@@ -49,6 +49,9 @@ struct ContextFragment {
    20: optional ContextApiKeyMgmt apikeymgmt
    21: optional set<Entity> entities
    22: optional ContextCustomerManagement cubasty
+
+   24: optional ContextTransactionSearch transaction_search
+   25: optional ContextThreats threats
 }
 
 /**
@@ -537,4 +540,71 @@ struct Customer {
 struct BankCard {
     1: optional string id
     2: optional set<Entity> parties
+}
+
+/**
+* Атрибуты TransactionSearchAPI (b2b-api)
+*/
+
+struct ContextTransactionSearch {
+    1: optional TransactionSearchOperation op
+}
+
+struct TransactionSearchOperation {
+    /**
+     * Например:
+     *  - "GetTransactionByID"
+     *  -
+     */
+    1: optional string id
+    2: optional EntityID party
+    3: optional EntityID transaction
+}
+
+/**
+* Атрибуты, описывающие риски злоупотреблений, связанные с заданным пользователем
+*/
+
+struct ContextThreats {
+    /**
+    * Перечень активных угроз (сработавших правил обнаружения)
+    */
+    1: optional set<Threat> threats
+}
+
+struct Threat {
+    1: required string name
+    2: required base.ThreatLevel level
+    /**
+    * Перечень полей и значений событий, на которое стриггерилось правило обнаружения
+    * например, если группировка событий производилась по идентификатору токена,
+    * то map будет содержать подобную запись
+    * {"subject.auth_signature": $JTI_FROM_JWT}
+    * в дальнейшем это может быть использовано для создания политик в bouncer таких
+    * например, что если input.subject.auth_signatire == threat.subject.auth_signature -> deny
+    */
+    3: optional base.Event event_details
+    /**
+    * Перечень тегов, назначенных правилом обнаружения
+    * Тег - это строковый идентификатор, ассоциированный с правилом обнаружения, предназначен для
+    * дополнительной классификации и обработки (например, для сопоставления с различными системами безопасности:
+    *  # MITRE ATT&CK framework references
+    *  - attack.discovery
+    *  - attack.t1012
+    *
+    *  # MITRE Cyber Analytics Repository (CAR)
+    *  - car.2016-04-005
+    *  - car-2016-04-005
+    *
+    *  # Traffic Light Protocol
+    *  - tlp.amber
+    *  - tlp.green
+    *
+    *  # CVE
+    *  - cve.2022-27925
+    * или для информирования движка обнаружения корреляций о времени охлаждения(автоотмены):
+    *  - cooldown.1m
+    * и т.д.)
+    */
+    4: optional set<string> tags
 }

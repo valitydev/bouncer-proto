@@ -607,4 +607,6 @@ struct Threat {
     * и т.д.)
     */
     4: optional set<string> tags
+    /** время срабатывания cooldown таймера
+    5: optional base.Timestamp expiration
 }

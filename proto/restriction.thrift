@@ -50,6 +50,6 @@ struct CommonAPIOperationRestrictions {
  * которые обрабатывают контекст угроз по субъекту доступа
  */
 struct RestrictionsThreats {
-    %% Временное ограничение на выполнение операций
+    /** Временное ограничение на выполнение операций **/
     1: optional base.Timestamp expiration
 }

@@ -9,8 +9,8 @@ on:
     branches: ["**"]
 
 env:
-  OTP_VERSION: 25
-  ELIXIR_VERSION: 1.14
+  OTP_VERSION: 28
+  ELIXIR_VERSION: 1.20
 
 jobs:
   build:

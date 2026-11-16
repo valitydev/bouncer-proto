@@ -10,7 +10,7 @@ on:
 
 env:
   OTP_VERSION: 28
-  ELIXIR_VERSION: 1.20
+  ELIXIR_VERSION: 1.19
 
 jobs:
   build:

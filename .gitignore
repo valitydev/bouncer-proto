@@ -26,3 +26,5 @@ erl_crash.dump
 node_modules
 generated
 dist
+
+mise.toml

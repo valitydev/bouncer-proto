@@ -11,10 +11,10 @@ on:
 jobs:
   run:
     name: Run checks
-    uses: valitydev/erlang-workflows/.github/workflows/erlang-simple-build.yml@v1
+    uses: valitydev/erlang-workflows/.github/workflows/erlang-parallel-build.yml@v2
     with:
-      otp-version: 24
-      rebar-version: 3.18
+      otp-version: 28
+      rebar-version: 3.26
       thrift-version: 0.14.2.3
       use-thrift: true
       run-eunit: false

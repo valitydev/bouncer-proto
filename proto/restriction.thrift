@@ -19,6 +19,7 @@ struct Restrictions {
     1: required Version vsn = HEAD
     2: optional RestrictionsAnalyticsAPI anapi
     3: optional RestrictionsCommonAPI capi
+    4: optional RestrictionsThreats threats
 }
 
 /**
@@ -42,4 +43,13 @@ struct RestrictionsCommonAPI {
 
 struct CommonAPIOperationRestrictions {
     1: required set<Entity> shops
+}
+
+/**
+ * Ограничения, накладываемые на любые сервисы,
+ * которые обрабатывают контекст угроз по субъекту доступа
+ */
+struct RestrictionsThreats {
+    /** Временное ограничение на выполнение операций **/
+    1: optional base.Timestamp expiration
 }
